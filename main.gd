@@ -23,6 +23,10 @@ func game_over() -> void:
 	$HUD.show_game_over()
 
 func new_game() -> void:
+#	Call the queue_free function on all members of the mobs scene group. This
+#   scene group was created in the Mobs scene, so all Mobs will automatically
+#   get added to the scene group
+	get_tree().call_group("mobs", "queue_free")
 	score = 0
 	$HUD.update_score(score)
 	$HUD.show_message("GET READY!")
