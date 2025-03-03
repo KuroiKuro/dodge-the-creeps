@@ -9,6 +9,7 @@ const GAME_OVER_MESSAGE = "GAME OVER!"
 func show_message(text: String) -> void:
 	$Message.text = text
 	$Message.show()
+#	Hide the message after the message timer times out
 	$MessageTimer.start()
 
 func show_game_over() -> void:
