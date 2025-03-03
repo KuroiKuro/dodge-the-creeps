@@ -7,7 +7,7 @@ const WELCOME_MESSAGE = "DODGE LES CREEPS"
 const GAME_OVER_MESSAGE = "GAME OVER!"
 
 func get_grading(score: int) -> String:
-	if score == 0:
+	if score == 1:
 		return "EXTREMELY PATHETIC!"
 	elif score <= 5:
 		return "PATHETIC!"
@@ -17,11 +17,11 @@ func get_grading(score: int) -> String:
 		return "NOOB!"
 	elif score <= 20:
 		return "DECENT!"
-	elif score <= 25:
-		return "NOT BAD!"
 	elif score <= 30:
+		return "NOT BAD!"
+	elif score <= 45:
 		return "GOOD!"
-	elif score <= 35:
+	elif score <= 60:
 		return "ZAI KIA!"
 	else:
 		return "HARDCORE ZAI KIA!"
