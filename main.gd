@@ -18,6 +18,8 @@ const MOB_VELOCITY_UPPER_BOUND = 250.0
 
 
 func game_over() -> void:
+	$Music.stop()
+	$DeathSound.play()
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
@@ -27,6 +29,7 @@ func new_game() -> void:
 #   scene group was created in the Mobs scene, so all Mobs will automatically
 #   get added to the scene group
 	get_tree().call_group("mobs", "queue_free")
+	$Music.play()
 	score = 0
 	$HUD.update_score(score)
 	$HUD.show_message("GET READY!")
