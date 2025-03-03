@@ -22,7 +22,7 @@ func game_over() -> void:
 	$DeathSound.play()
 	$ScoreTimer.stop()
 	$MobTimer.stop()
-	$HUD.show_game_over()
+	$HUD.show_game_over(score)
 
 func new_game() -> void:
 #	Call the queue_free function on all members of the mobs scene group. This
@@ -30,9 +30,10 @@ func new_game() -> void:
 #   get added to the scene group
 	get_tree().call_group("mobs", "queue_free")
 	$Music.play()
+	$HUD.hide_grading()
 	score = 0
 	$HUD.update_score(score)
-	$HUD.show_message("GET READY!")
+	$HUD.show_message("PRESS THE ARROW KEYS TO MOVE\nGET READY!")
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 

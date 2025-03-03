@@ -6,14 +6,43 @@ signal start_game
 const WELCOME_MESSAGE = "DODGE LES CREEPS"
 const GAME_OVER_MESSAGE = "GAME OVER!"
 
+func get_grading(score: int) -> String:
+	if score == 0:
+		return "EXTREMELY PATHETIC!"
+	elif score <= 5:
+		return "PATHETIC!"
+	elif score <= 10:
+		return "LOUSY!"
+	elif score <= 15:
+		return "NOOB!"
+	elif score <= 20:
+		return "DECENT!"
+	elif score <= 25:
+		return "NOT BAD!"
+	elif score <= 30:
+		return "GOOD!"
+	elif score <= 35:
+		return "ZAI KIA!"
+	else:
+		return "HARDCORE ZAI KIA!"
+	
 func show_message(text: String) -> void:
 	$Message.text = text
 	$Message.show()
 #	Hide the message after the message timer times out
 	$MessageTimer.start()
 
-func show_game_over() -> void:
+func show_grading(score) -> void:
+	var grading = get_grading(score)
+	$GradingLabel.text = "YOUR GRADE: %s" % grading
+	$GradingLabel.show()
+
+func hide_grading() -> void:
+	$GradingLabel.hide()
+
+func show_game_over(score: int) -> void:
 	show_message(GAME_OVER_MESSAGE)
+	show_grading(score)
 	await $MessageTimer.timeout
 	
 	$Message.text = WELCOME_MESSAGE
